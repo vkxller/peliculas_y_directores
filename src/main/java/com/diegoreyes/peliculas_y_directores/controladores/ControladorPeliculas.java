@@ -49,14 +49,14 @@ public String obtenerTodasLasPeliculas() {
     //Mtodo para obtener una película por nombre
     @GetMapping("/peliculas/{nombre}")
     public String obtenerPeliculaPorNombre(@PathVariable String nombre) {
-        //Buscar la película (ignorando mayusculas/minisculas)
+        //Buscar la pelicula (ignorando mayusculas/minisculas)
         for (String pelicula : listaPeliculas.keySet()) {
             if (pelicula.equalsIgnoreCase(nombre)) {  //equalsIgnoreCase compara ignorando mayusculas/minusculas
                 String director = listaPeliculas.get(pelicula);
-                return "Película: " + pelicula + ", Director: " + director;
+                return "Pelicula: " + pelicula + ", Director: " + director;
             }
         }
-        return "La película no se encuentra en nuestra lista."; //Si no encuentra la película después de recorrer todo el HashMap
+        return "La pelicula no se encuentra en nuestra lista."; //Si no encuentra la película después de recorrer todo el HashMap
     }
 
     // Método para obtener películas por director
@@ -64,7 +64,7 @@ public String obtenerTodasLasPeliculas() {
     public String obtenerPeliculasPorDirector(@PathVariable String nombre) {
         List<String> peliculasDelDirector = new ArrayList<>();
         
-        // Buscar películas del director (ignorando mayúsculas/minúsculas)
+        //Buscar películas del director (ignorando mayusculas/minusculas)
         for (String pelicula : listaPeliculas.keySet()) {
             if (listaPeliculas.get(pelicula).equalsIgnoreCase(nombre)) {
                 peliculasDelDirector.add(pelicula);
